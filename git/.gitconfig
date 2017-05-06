@@ -1,0 +1,49 @@
+[user]
+    name = Charlie Penner
+
+[github]
+	user = cpenner461
+
+[core]
+    excludesfile = /Users/cpenner/.gitignore
+
+[difftool "sourcetree"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path = 
+
+[mergetool "sourcetree"]
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
+
+[push]
+    default = simple
+
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+    # push newly created local branch and open a PR
+    push-pr = "!f() { git push --set-upstream origin `git rev-parse --abbrev-ref HEAD` 2>&1 | tee /tmp/gitpush; open `grep 'Create pull request' /tmp/gitpush -a1 | tail -n1 | cut -d' ' -f4`; }; f"
+
+    # pull a PR from stash
+    prstash = "!f(){ \
+                   git checkout master        && \
+                   git fetch origin           && \
+                   (git branch -D pr/$1 || :) && \
+                   git fetch origin refs/pull-requests/$1/merge:pr/$1 && \
+                   git checkout pr/$1; \
+               };f"
+
+    # pull a PR from github
+    prhub   = "!f(){ \
+               git checkout master        && \
+               git fetch origin           && \
+               (git branch -D pr/$1 || :) && \
+               git fetch origin refs/pull/$1/merge:pr/$1 && \
+               git checkout pr/$1; \
+           };f"
+    
