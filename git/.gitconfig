@@ -5,7 +5,7 @@
 	user = cpenner461
 
 [core]
-    excludesfile = /Users/cpenner/.gitignore
+    excludesfile = /Users/charlie/.gitignore
 
 [difftool "sourcetree"]
     cmd = opendiff \"$LOCAL\" \"$REMOTE\"
@@ -47,3 +47,5 @@
                git checkout pr/$1; \
            };f"
     
+[credential]
+	helper = osxkeychain
