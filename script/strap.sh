@@ -230,6 +230,7 @@ logk
 log "Installing Homebrew taps and extensions:"
 brew bundle --file=- <<EOF
 tap 'caskroom/cask'
+tap 'caskroom/versions'
 tap 'homebrew/core'
 tap 'homebrew/services'
 EOF
@@ -251,44 +252,16 @@ else
   logk
 fi
 
-# Setup Brewfile
-if [ -n "$STRAP_GITHUB_USER" ] && ! [ -f "$HOME/.Brewfile" ]; then
-  HOMEBREW_BREWFILE_URL="https://github.com/$STRAP_GITHUB_USER/homebrew-brewfile"
+log "###############################################################"
+log "##                                                           ##"
+log "## IF THIS IS A FRESH PROVISION THE SYSTEM MUST BE REBOOTED. ##"
+log "##                                                           ##"
+log "###############################################################"
 
-  if git ls-remote "$HOMEBREW_BREWFILE_URL" &>/dev/null; then
-    log "Fetching $STRAP_GITHUB_USER/homebrew-brewfile from GitHub:"
-    if [ ! -d "$HOME/.homebrew-brewfile" ]; then
-      log "Cloning to ~/.homebrew-brewfile:"
-      git clone $Q "$HOMEBREW_BREWFILE_URL" ~/.homebrew-brewfile
-      logk
-    else
-      (
-        cd ~/.homebrew-brewfile
-        git pull $Q
-      )
-    fi
-    ln -sf ~/.homebrew-brewfile/Brewfile ~/.Brewfile
-    logk
-  fi
-fi
-
-# Install from local Brewfile
-if [ -f "$HOME/.Brewfile" ]; then
-  log "Installing from user Brewfile on GitHub:"
-  brew bundle check --global || brew bundle --global
-  logk
-fi
-
-# Other installation
-CUSTOM_FULL_PATH="$(cd "$(dirname "$0")" && pwd)/custom.sh"
-if [ -f $CUSTOM_FULL_PATH ]; then
-	log "Executing the custom install"
-	$CUSTOM_FULL_PATH
-fi
-
-# Setup dotfiles
+# clone dotfiles
 if [ -n "$STRAP_GITHUB_USER" ]; then
-  DOTFILES_URL="https://github.com/$STRAP_GITHUB_USER/dotfiles"
+  #DOTFILES_URL="https://github.com/$STRAP_GITHUB_USER/dotfiles"
+  DOTFILES_URL="git@github.com:$STRAP_GITHUB_USER/dotfiles.git"
 
   if git ls-remote "$DOTFILES_URL" &>/dev/null; then
     log "Fetching $STRAP_GITHUB_USER/dotfiles from GitHub:"
@@ -301,6 +274,31 @@ if [ -n "$STRAP_GITHUB_USER" ]; then
         git pull $Q --rebase --autostash
       )
     fi
+    logk
+
+    log "Manually symlinking Brewfile"
+    cd
+    ln -sf ~/.dotfiles/brew/.Brewfile .
+  fi
+fi
+
+
+# Install from local Brewfile
+if [ -f "$HOME/.Brewfile" ]; then
+  log "Installing from user Brewfile on GitHub:"
+  brew bundle check --global || brew bundle --global
+  logk
+fi
+
+# Other installation
+CUSTOM_FULL_PATH="$HOME/.dotfiles/script/custom.sh"
+if [ -f $CUSTOM_FULL_PATH ]; then
+	log "Executing the custom install"
+	$CUSTOM_FULL_PATH
+fi
+
+# install dotfiles
+if [ -n "$STRAP_GITHUB_USER" ]; then
     (
       cd ~/.dotfiles
       for i in script/setup script/bootstrap; do
@@ -312,7 +310,6 @@ if [ -n "$STRAP_GITHUB_USER" ]; then
       done
     )
     logk
-  fi
 fi
 
 STRAP_SUCCESS="1"

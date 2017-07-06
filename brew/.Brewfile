@@ -1,20 +1,32 @@
+## Installing prereqs - order matters in this section!
+cask "java"
 
-## brews
+## Installing packages via brew
+brew "ack"
+brew "dockutil"
 brew "git"
 brew "go"
+brew "hg"
+brew "jq"
 brew "maven"
+brew "netcat"
+brew "nmap"
 brew "pandoc"
+brew "pssh"
 brew "python"
 brew "python3"
+brew "pyenv-virtualenvwrapper"
 brew "stow"
 brew "tmux"
 brew "watch"
 brew "zsh"
 brew "zsh-completions"
 
-## casks
+## Installing applications via cask
 cask "1password"
+cask "acorn"
 cask "atom"
+cask "audio-hijack"
 cask "crashplan"
 cask "dropbox"
 cask "firefox"
@@ -22,15 +34,19 @@ cask "google-chrome"
 cask "handbrake"
 cask "iterm2"
 cask "intellij-idea"
-cask "java"
 cask "launchbar"
-cask "littlesnitch"
-cask "nmap"
+cask "little-snitch"
+cask "omnigraffle5"
+cask "macvim"
+cask "pandora"
+cask "skype"
+cask "transmit"
 cask "vagrant"
 cask "virtualbox"
 cask "viscosity"
+cask "vlc"
 
-## app store
+## Installations from the App Store
 mas "Airmail 3", id: 918858936
 mas "Logic Pro X", id: 634148309
 mas "Marked", id: 448925439

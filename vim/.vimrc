@@ -27,9 +27,10 @@ set foldmethod=syntax
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'phleet/vim-mercenary'
 filetype plugin indent on
 " end of vundle
+
+execute pathogen#infect()
 
 if has('gui_running')
     set gfn=Inconsolata:h16
