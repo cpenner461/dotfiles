@@ -77,6 +77,7 @@ bindkey "${terminfo[kcuu1]}" history-beginning-search-backward
 bindkey "${terminfo[kcud1]}" history-beginning-search-forward
 
 export WORKON_HOME=$HOME/.virtualenvs
+if [ ! -d $WORKON_HOME ]; then mkdir $WORKON_HOME; fi
 source /usr/local/bin/virtualenvwrapper.sh
 
 # history mods: entries from multiple sessions are interleaved in the history 

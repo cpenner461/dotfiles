@@ -36,6 +36,8 @@ else
 	log "Oh-My-Zsh already installed"
 fi
 
+## python things
+pip install virtualenvwrapper
 
 ## vim things
 
