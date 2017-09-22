@@ -69,6 +69,7 @@ export PATH="$HOME/bin:/usr/local/apache-maven/apache-maven-latest/bin:/usr/loca
 
 alias vi="mvim"
 alias less="less -r"
+alias diff="colordiff"
 
 bindkey -v
 bindkey -M vicmd 'k' history-beginning-search-backward

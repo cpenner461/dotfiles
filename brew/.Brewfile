@@ -3,6 +3,7 @@ cask "java"
 
 ## Installing packages via brew
 brew "ack"
+brew "colordiff"
 brew "dockutil"
 brew "git"
 brew "go"
