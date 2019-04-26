@@ -45,6 +45,7 @@ cask "vagrant"
 cask "virtualbox"
 cask "viscosity"
 cask "vlc"
+cask "wkhtmltopdf"
 
 ## Installations from the App Store
 mas "Airmail 3", id: 918858936
