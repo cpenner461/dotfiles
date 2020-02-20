@@ -24,10 +24,10 @@ syn sync fromstart
 set foldmethod=syntax
 
 " enable vundle https://github.com/gmarik/vundle
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-filetype plugin indent on
+"filetype off
+"set rtp+=~/.vim/bundle/vundle/
+"call vundle#rc()
+"filetype plugin indent on
 " end of vundle
 
 execute pathogen#infect()
@@ -39,6 +39,16 @@ if has('gui_running')
     " solarized colorscheme in gui only
     set background=dark
     colorscheme solarized
+endif
+
+if has('gui_vimr')
+    "set gfn=Inconsolata:h16
+    "set guioptions=-t
+
+    " solarized colorscheme in gui only
+    set background=dark
+    "colorscheme candid
+    colorscheme darcula
 endif
 
 nmap =j :%!python -m json.tool<CR>
