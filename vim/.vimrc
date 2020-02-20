@@ -9,6 +9,7 @@ set incsearch
 set hlsearch
 set shiftwidth=4
 autocmd FileType python setlocal expandtab
+autocmd FileType yaml setlocal expandtab
 set softtabstop=4
 set ts=4                   " set tabs to display as width 4
 set number
@@ -22,13 +23,6 @@ set foldenable
 syn region myFold start="{" end="}" transparent fold
 syn sync fromstart
 set foldmethod=syntax
-
-" enable vundle https://github.com/gmarik/vundle
-"filetype off
-"set rtp+=~/.vim/bundle/vundle/
-"call vundle#rc()
-"filetype plugin indent on
-" end of vundle
 
 execute pathogen#infect()
 
@@ -52,3 +46,19 @@ if has('gui_vimr')
 endif
 
 nmap =j :%!python -m json.tool<CR>
+
+" ###### vundle ######
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'vim-scripts/velocity.vim'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+" ###### vundle ######
+
+au! BufRead,BufNewFile *.vm  setfiletype velocity
