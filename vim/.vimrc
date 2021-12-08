@@ -42,7 +42,7 @@ if has('gui_vimr')
     " solarized colorscheme in gui only
     set background=dark
     "colorscheme candid
-    colorscheme darcula
+    "colorscheme darcula
 endif
 
 nmap =j :%!python -m json.tool<CR>

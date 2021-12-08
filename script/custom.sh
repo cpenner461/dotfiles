@@ -36,9 +36,6 @@ else
 	log "Oh-My-Zsh already installed"
 fi
 
-## python things
-pip install virtualenvwrapper
-
 ## vim things
 
 log "Installing vundle"
@@ -59,39 +56,46 @@ getgit \
 	vim-colors-solarized.git
 
 log "Configuring dock"
-dargs="--no-restart " 
+dargs="--no-restart "
 dockadd() { dockutil $dargs --add "$1"; }
-dockspace() { set -x; dockutil --add '' --type spacer --section apps --after "$1"; sleep 2; set +x; }
+dockspace() { dockutil --add '' --type spacer --section apps --after "$1"; sleep 2; }
+# I don't love the verbose output of dockutil, so if interested in seeing
+# what's happening wrap relevant bits in a 'set -x' and a 'set +x'
 
 # start by resetting and then wiping out anything I don't want
+log "Clearing existing applications"
 osascript -e 'tell application "System Preferences" to quit'
 defaults write com.apple.dock persistent-apps -array
-killall Dock && sleep 3
+killall Dock && sleep 5
 
 log "Adding applications"
 # continue by adding things I want
 dockadd /Applications/LaunchBar.app
-dockadd "/Applications/Utilities/Activity Monitor.app"
-dockadd /Applications/Firefox.app
+dockadd "/System/Applications/Utilities/Activity Monitor.app"
 dockadd "/Applications/Google Chrome.app"
 dockadd /Applications/Safari.app
-dockadd "/Applications/1Password 6.app"
-dockadd "/Applications/Airmail 3.app"
+dockadd "/Applications/1Password 7.app"
+dockadd /Applications/Mimestream.app
 dockadd /Applications/Slack.app
-dockadd /Applications/Messages.app
-dockadd /Applications/Quiver.app
-dockadd /Applications/Utilities/Terminal.app
+dockadd /Applications/zoom.us.app
+dockadd /System/Applications/Messages.app
 dockadd /Applications/iTerm.app
-dockadd /Applications/MacVim.app
+dockadd /Applications/VimR.app
 dockadd "/Applications/IntelliJ IDEA.app"
-dockadd /Applications/Photos.app
-killall Dock && sleep 3
+dockadd "/Applications/Visual Studio Code.app"
+dockadd /Applications/Obsidian.app
+dockadd /Applications/Drafts.app
+dockadd /Applications/OmniFocus.app
+dockadd /System/Applications/Music.app
+killall Dock && sleep 5
 
 log "Adding spacer tiles"
 dockspace "Activity Monitor"
-dockspace "1Password 6" 
+dockspace "1Password 7"
 dockspace "Messages"
-dockspace "Quiver"
+dockspace "Visual Studio Code"
+dockspace "OmniFocus"
+killall Dock && sleep 5
 
 log "Configuring options"
 defaults write com.apple.dock autohide -bool true

@@ -16,12 +16,16 @@ pushd $script_dir/.. >/dev/null
 stow -R stow
 
 for dd in $(ls); do
-	# stow everything except stow and this script directory
-	if [ -d $dd -a "$dd" != "script" -a "$dd" != "stow" ]; then
+	# stow everything except stow, config, and this script directory
+	if [ -d $dd -a "$dd" != "script" -a "$dd" != "stow" -a "$dd" != "config" ]; then
 		echo "Stowing ... $dd"
 		stow -R $dd
 	fi
 done
+
+# the config directory needs special attention
+echo "Stowing the config directory"
+stow -R -t ~/.config config
 
 popd >/dev/null
 

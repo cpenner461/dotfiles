@@ -46,9 +46,6 @@ ZSH_THEME="blinks"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(
     git
-    mercurial
-    jira
-    mercurial
     mvn
     pip
     pylint
@@ -56,7 +53,7 @@ plugins=(
     vagrant
 
     # last position
-    zsh-syntax-highlighting
+    #zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -65,12 +62,12 @@ source $ZSH/oh-my-zsh.sh
 
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
-export PATH="$HOME/bin:/usr/local/apache-maven/apache-maven-latest/bin:/usr/local/packer:$PATH"
+export PATH="$HOME/bin:/usr/local/opt/openjdk/bin/:$PATH"
 
 alias vi="vimr"
 alias less="less -r"
 alias diff="colordiff"
-alias airport="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport"
+#alias airport="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport"
 
 bindkey -v
 bindkey -M vicmd 'k' history-beginning-search-backward
@@ -78,9 +75,9 @@ bindkey -M vicmd 'j' history-beginning-search-forward
 bindkey "${terminfo[kcuu1]}" history-beginning-search-backward
 bindkey "${terminfo[kcud1]}" history-beginning-search-forward
 
-export WORKON_HOME=$HOME/.virtualenvs
-if [ ! -d $WORKON_HOME ]; then mkdir $WORKON_HOME; fi
-source /usr/local/bin/virtualenvwrapper.sh
+#export WORKON_HOME=$HOME/.virtualenvs
+#if [ ! -d $WORKON_HOME ]; then mkdir $WORKON_HOME; fi
+#source /usr/local/bin/virtualenvwrapper.sh
 
 # history mods: entries from multiple sessions are interleaved in the history 
 # file, but individual in-memory histories don't reflect what happened in other 
@@ -93,6 +90,7 @@ setopt histignoredups
 # enable #'ing a line out
 setopt interactivecomments
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export JAVA_HOME=$(/usr/libexec/java_home)
-
+# pyenv magic
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
