@@ -67,9 +67,10 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$HOME/bin:/usr/local/apache-maven/apache-maven-latest/bin:/usr/local/packer:$PATH"
 
-alias vi="mvim"
+alias vi="vimr"
 alias less="less -r"
 alias diff="colordiff"
+alias airport="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport"
 
 bindkey -v
 bindkey -M vicmd 'k' history-beginning-search-backward
