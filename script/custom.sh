@@ -81,7 +81,7 @@ dockadd /Applications/zoom.us.app
 dockadd /System/Applications/Messages.app
 dockadd /Applications/iTerm.app
 dockadd /Applications/VimR.app
-dockadd "/Applications/IntelliJ IDEA.app"
+dockadd "/Applications/IntelliJ IDEA CE.app"
 dockadd "/Applications/Visual Studio Code.app"
 dockadd /Applications/Obsidian.app
 dockadd /Applications/Drafts.app
