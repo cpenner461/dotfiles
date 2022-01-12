@@ -79,8 +79,8 @@ bindkey "${terminfo[kcud1]}" history-beginning-search-forward
 #if [ ! -d $WORKON_HOME ]; then mkdir $WORKON_HOME; fi
 #source /usr/local/bin/virtualenvwrapper.sh
 
-# history mods: entries from multiple sessions are interleaved in the history 
-# file, but individual in-memory histories don't reflect what happened in other 
+# history mods: entries from multiple sessions are interleaved in the history
+# file, but individual in-memory histories don't reflect what happened in other
 # sessions
 setopt incappendhistory
 setopt extendedhistory
@@ -94,3 +94,6 @@ setopt interactivecomments
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+# ruby
+export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
