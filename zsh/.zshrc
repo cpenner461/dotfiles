@@ -97,3 +97,6 @@ eval "$(pyenv virtualenv-init -)"
 
 # ruby
 export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
+
+# simple prompt for terminal screen recording
+if [[ $ASCIINEMA_REC = 1 ]]; then PROMPT="> "; unset RPROMPT; fi
