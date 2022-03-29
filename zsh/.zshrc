@@ -60,6 +60,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+export PATH="/opt/homebrew/bin:$PATH"
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
 export PATH="$HOME/bin:/usr/local/opt/openjdk/bin/:$PATH"
@@ -100,3 +101,7 @@ export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$HOME/.l
 
 # simple prompt for terminal screen recording
 if [[ $ASCIINEMA_REC = 1 ]]; then PROMPT="> "; unset RPROMPT; fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

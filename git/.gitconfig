@@ -5,6 +5,9 @@
 [github]
 	user = cpenner461
 
+[init]
+	defaultBranch = main
+
 [core]
     excludesfile = /Users/charlie/.gitignore
 
