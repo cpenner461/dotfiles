@@ -66,9 +66,10 @@ export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/bin:/usr/local/opt/openjdk/bin/:$PATH"
 
 alias vi="vimr"
-alias less="less -r"
+#alias less="less -r"
 alias diff="colordiff"
 #alias airport="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport"
+alias tree="exa --tree"
 
 bindkey -v
 bindkey -M vicmd 'k' history-beginning-search-backward
@@ -105,3 +106,6 @@ if [[ $ASCIINEMA_REC = 1 ]]; then PROMPT="> "; unset RPROMPT; fi
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# NSS SE convenience config
+[[ -s "$HOME/.zshrc-nss-se" ]] && source "$HOME/.zshrc-nss-se"

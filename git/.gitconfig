@@ -31,7 +31,9 @@
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
     # push locally created branch and open a PR
-    push-pr = "!f() { git push --set-upstream origin `git rev-parse --abbrev-ref HEAD` 2>&1 | tee /tmp/gitpush; open `grep 'Create a pull request' /tmp/gitpush -a1 | tail -n1 | cut -d' ' -f7`; }; f"
+    push-pr = "!f() { echo '## PUSHING -> GITHUB'; git push --set-upstream origin `git rev-parse --abbrev-ref HEAD` 2>&1 | tee /tmp/gitpush; echo '## OPENING BROWSER'; open `grep 'Create a pull request' /tmp/gitpush -a1 | tail -n1 | cut -d' ' -f7`; echo DONE;}; f"
+    # push locally created branch
+    push-newbranch = "!f() { git push --set-upstream origin `git rev-parse --abbrev-ref HEAD`; }; f"
 
     # pull a PR from stash
     prstash = "!f(){ \

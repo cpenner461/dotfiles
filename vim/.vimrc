@@ -19,10 +19,10 @@ set autoindent
 "set smartindent
 set vb
 
-set foldenable
-syn region myFold start="{" end="}" transparent fold
-syn sync fromstart
-set foldmethod=syntax
+"set foldenable
+"syn region myFold start="{" end="}" transparent fold
+"syn sync fromstart
+"set foldmethod=syntax
 
 execute pathogen#infect()
 
