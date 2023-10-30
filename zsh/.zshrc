@@ -101,8 +101,10 @@ export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$HOME/.l
 # simple prompt for terminal screen recording
 if [[ $ASCIINEMA_REC = 1 ]]; then PROMPT="> "; unset RPROMPT; fi
 
-# NSS SE convenience config
-[[ -s "$HOME/.zshrc-nss-se" ]] && source "$HOME/.zshrc-nss-se"
+# aws cli command completion
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+complete -C '/usr/local/bin/aws_completer' aws
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
